@@ -1,0 +1,60 @@
+# server port
+server:
+  port: 10
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://100.0.0.230:3306/ECP_USER
+    username: portal
+    password: portal
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      naming:
+        physical-strategy: okestro.servicebroker.configuration.jpa.CustomPhysicalNamingStrategy
+      ddl-auto: update
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  cloud:
+    openservicebroker:
+      catalog:
+        services:
+          - id: de40e97e-0bb5-466c-84ef-7ec85ec7315d
+            name: redis-paas
+            description: redis
+            plans:
+              - id: afe580b0-e344-4917-9b7c-db2b3849b782
+                name: standard
+                description: standard
+          - id: cc8bdec3-ce74-4971-86bc-4c72cc255c7a
+            name: rabbitmq-paas
+            description: rabbitmq
+            plans:
+              - id: 6aa752f8-2398-4d6f-89a3-8cfed0a1c0e6
+                name: standard
+                description: standard
+
+# log
+logging:
+  level:
+    sample: debug
+#######
+# api url
+api:
+  url:
+    k8s: http://localhost:1001/
+#######
+
+
+
+
+k8s:
+  url: https://100.0.0.175:6443
+  token: eyJhbGciOiJSUzI1NiIsImtpZCI6InZwSFkyQmFyaDlNNTBOcF90enZPMHo0eDVfTnVaNkR5bkdvQko2M0NIcVUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4taGNiZ2YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImUyYTMxOWU5LTQwN2YtNDYxMS1hNTc1LTAwZTA2ZGZmMDQ5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iwilzRfSxq9nG3TgZ0RPCwFZlhZXDJkuEEY_9S9ZPGrOOpMgilJpI9pjp3OiMhn0piGGmOEsNRwsSloalkdn_74SPkyhQzaXMh7uvS3pGIYC6OuNxMcfHDaiUr__N4gsRIa-_vX9PPvNLsXpEm5MVnTrDVBtPF2kbcaFcTku6m1wtiPt0r7jQpPOF5B2B_M928vdA1-MzQiOb86xCpzM58_WR1JEazEA7IDyAfyeV3pjF5FVA1yc9rEW0fIhSFWaOyQb7_yQfJ5vhbqBH-CPYRpHbdOMW6Pzs8eHQ3Tj3c3Rta4x1TKIn4CPA_X7ZkA1ICCXNrQfUGcu9BKjA3xvdw
+  username: root
+  password: okestro2018

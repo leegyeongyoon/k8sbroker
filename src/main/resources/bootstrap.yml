@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    vault:
+      host: 100.0.0.189
+      port: 8200
+      scheme: http
+      authentication: TOKEN
+      token: s.0D8xFysWozVxuownT0RZlRdH
+      kv:
+        enabled: true
+        application-name: prd/portal/iaas,prd/portal/iaas/servicebroker,prd/portal/user,prd/portal/sce
+      enabled: false

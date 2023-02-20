@@ -1,0 +1,60 @@
+# server port
+server:
+  port: 11010
+
+spring:
+#  freemarker:
+#    template-loader-path: classpath:/templates/yamls/
+#    suffix: .yml
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${adp.db.url}
+    username: ${adp.db.username}
+    password: ${adp.db.password}
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      naming:
+        physical-strategy: okestro.servicebroker.configuration.jpa.CustomPhysicalNamingStrategy
+      ddl-auto: none
+    generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  cloud:
+    openservicebroker:
+      catalog:
+        services:
+          #          - id: 943c3d64-70a0-4642-bb7e-b57b19dae858
+          - id: test1111-70a0-4642-bb7e-b57b19dae858
+            name: redis-paas
+            description: redis-paas
+            plans:
+              #              - id: 2a4a82f4-4cfa-4366-bfb9-84afbe25d01c
+              - id: test1111-4cfa-4366-bfb9-84afbe25d01c
+                name: standard
+                description: standard
+
+# log
+logging:
+  level:
+    sample: debug
+#######
+# api url
+api:
+  url:
+    k8sApi: http://svc-k8s-api.portal.svc:11001/
+#######
+
+
+
+
+k8s:
+  url: https://100.0.0.175:6443
+  token: eyJhbGciOiJSUzI1NiIsImtpZCI6InZwSFkyQmFyaDlNNTBOcF90enZPMHo0eDVfTnVaNkR5bkdvQko2M0NIcVUifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4taGNiZ2YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImUyYTMxOWU5LTQwN2YtNDYxMS1hNTc1LTAwZTA2ZGZmMDQ5NSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.iwilzRfSxq9nG3TgZ0RPCwFZlhZXDJkuEEY_9S9ZPGrOOpMgilJpI9pjp3OiMhn0piGGmOEsNRwsSloalkdn_74SPkyhQzaXMh7uvS3pGIYC6OuNxMcfHDaiUr__N4gsRIa-_vX9PPvNLsXpEm5MVnTrDVBtPF2kbcaFcTku6m1wtiPt0r7jQpPOF5B2B_M928vdA1-MzQiOb86xCpzM58_WR1JEazEA7IDyAfyeV3pjF5FVA1yc9rEW0fIhSFWaOyQb7_yQfJ5vhbqBH-CPYRpHbdOMW6Pzs8eHQ3Tj3c3Rta4x1TKIn4CPA_X7ZkA1ICCXNrQfUGcu9BKjA3xvdw
+  username: root
+  password: okestro2018
+
+
