@@ -12,7 +12,7 @@ provider "helm" {
 resource "helm_release" "redis-paas" {
   name       = "${appName}"
   namespace = "${namespace}"
-  chart = "/var/folders/charts/redis-ha"
+  chart = "/Users/igyeong-yun/Desktop/helm/redis-ha"
   timeout = 600
   cleanup_on_fail = true
 
@@ -22,12 +22,12 @@ resource "helm_release" "redis-paas" {
   }
 }
 #<#else>
-resource "helm_release" "rabbitmq-paas" {
-  name       = "${appName}"
-  namespace = "${namespace}"
-  chart = "/var/folders/charts/rabbitmq"
-  timeout = 600
-  cleanup_on_fail = true
-}
+#resource "helm_release" "rabbitmq-paas" {
+#  name       = "${appName}"
+#  namespace = "${namespace}"
+#  chart = "/var/folders/charts/rabbitmq"
+#  timeout = 600
+#  cleanup_on_fail = true
+#}
 
 #</#if>
