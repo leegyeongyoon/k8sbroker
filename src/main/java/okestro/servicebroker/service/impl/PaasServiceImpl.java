@@ -34,6 +34,13 @@ public class PaasServiceImpl implements PaasService {
     @Value("${api.url.k8s}")
     private String k8sUrl;
 
+    @Value("${k8s.url}")
+    private String k8sClusterId;
+
+    @Value("${k8s.token}")
+    private String k8sToken;
+
+
 
 
     public PaasServiceImpl(WebClient webClient, Configuration configuration, PaasServiceInstanceRepo openshiftServiceInstanceRepo, PaaSUtils paaSUtils, ShellCommandExecutor shellCommandExecutor) {
@@ -52,19 +59,19 @@ public class PaasServiceImpl implements PaasService {
         String createdDir = instance.getDirectoryPath();
 
         ClusterInfoDto clusterInfoDto =  getClusterInfo(projectId);
-
-        if (clusterInfoDto == null) {
-            throw new RuntimeException("clusterInfo is null");
-        }
+//
+//        if (clusterInfoDto == null) {
+//            throw new RuntimeException("clusterInfo is null");
+//        }
 
         try {
             Template tfTemplate = configuration.getTemplate(PaaSBrokerConstant.TF_PROVISION_FILE);
 
             Map<String, String> provisionParams = new HashMap<>();
 
-            provisionParams.put(PaaSBrokerConstant.PROVISION_HOST, clusterInfoDto.getUrl());
-            provisionParams.put(PaaSBrokerConstant.PROVISION_TOKEN, clusterInfoDto.getToken());
-            provisionParams.put(PaaSBrokerConstant.PROVISION_NAMESPACE, clusterInfoDto.getNamespace());
+            provisionParams.put(PaaSBrokerConstant.PROVISION_HOST, k8sClusterId);
+            provisionParams.put(PaaSBrokerConstant.PROVISION_TOKEN, k8sToken);
+            provisionParams.put(PaaSBrokerConstant.PROVISION_NAMESPACE, "terraformtest");
             provisionParams.put(PaaSBrokerConstant.PROVISION_APP_NAME, request.getParameters().get("service_instance_nm").toString());
 //            provisionParams.put(PaaSBrokerConstant.PROVISION_CA, paaSUtils.getAbsolutePath(PaaSBrokerConstant.PROVISION_CA_CLASSPATH));
             provisionParams.put(PaaSBrokerConstant.PROVISION_SELECTED_SVC, request.getServiceDefinition().getName());
