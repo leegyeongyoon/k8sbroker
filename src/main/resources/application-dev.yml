@@ -1,6 +1,6 @@
 # server port
 server:
-  port: 11010
+  port: ${css.server.port}
 
 spring:
 #  freemarker:
@@ -8,9 +8,9 @@ spring:
 #    suffix: .yml
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: ${adp.db.url}
-    username: ${adp.db.username}
-    password: ${adp.db.password}
+    url: ${sce.db.url}
+    username: ${sce.db.username}
+    password: ${sce.db.password}
   jpa:
     properties:
       hibernate:
