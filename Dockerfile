@@ -1,5 +1,4 @@
-FROM harbor.okestro.cld/library/paas-broker-jdk11:0.1
-LABEL maintainer="jj.kim"
+FROM harbor.scocloud.kr/library/paas-broker-jdk11:latest
 RUN mkdir -p /app/paas-broker
 ADD ./target/PaaSBroker-0.1.jar /app/paas-broker
 WORKDIR /app/paas-broker

@@ -58,7 +58,7 @@ public class PaasServiceImpl implements PaasService {
         String projectId = instance.getProjectId();
         String createdDir = instance.getDirectoryPath();
 
-        ClusterInfoDto clusterInfoDto =  getClusterInfo(projectId);
+//        ClusterInfoDto clusterInfoDto =  getClusterInfo(projectId);
 //
 //        if (clusterInfoDto == null) {
 //            throw new RuntimeException("clusterInfo is null");
