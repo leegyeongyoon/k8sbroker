@@ -10,7 +10,7 @@ provider "helm" {
 resource "helm_release" "redis-paas" {
   name       = "${appName}"
   namespace = "${namespace}"
-  chart = "/Users/igyeong-yun/Desktop/helm/redis-ha"
+  chart = "/home/redis-ha"
   timeout = 600
   cleanup_on_fail = true
 
